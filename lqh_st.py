@@ -93,7 +93,7 @@ share_max=st.sidebar.slider("Share Hogar Maximo ",min_x,max_x)
 #probabilidad_2=round((1-cdf(share_cdf_2))*100,1)
 
 st.markdown("## Probabilidad Share Hogar*")
-st.write("(*)Para este análisis solo se consideran datos históricos")
+st.write("(*)Para este análisis solo se consideran datos históricos y el cálculo es con la curva real")
            
 if share_max>share_min:
     probabilidad_p=round((cdf_p(share_max)-cdf_p(share_min))*100,1)
