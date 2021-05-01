@@ -66,7 +66,7 @@ salida_Franja=lqh.groupby(['Franja'])['SH_C13','SC_C13'].agg(funciones)
 salida_Franja=salida_Franja.reset_index()
 #valor_x=list(salida_Franja.index)
 st.write(salida_Franja)
-st.write(salida_Franja.columns)
+#st.write(salida_Franja.columns)
 
 select=st.sidebar.selectbox('Evolucion Franjas',['Prime','Off Prime PM','Prime Segunda Franja','Off Prime AM'],key='1')
 if st.sidebar.checkbox("Mostrar",True):
