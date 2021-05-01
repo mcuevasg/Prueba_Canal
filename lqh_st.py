@@ -36,6 +36,8 @@ off2=lqh[lqh.Franja=="Off Prime AM"]
 
 
 hogar_canales=['SH_C13','SH_TVN','SH_MEGA','SH_CHV','SH_TVPAGO']
+funciones=['mean','count','median','var','std']
+
 
 ###################### IMAGEN y TEXTO INICIAL ##########################################################################
 img=Image.open("lqh.png")
@@ -60,6 +62,12 @@ if st.sidebar.checkbox("Base Lugares que Hablan",True):
 
 ########################### Gráficos PRIME y OFF        ######################################################################
 
+salida_Franja=lqh.groupby(['Franja'])['SH_C13','SC_C13'].agg(funciones)
+salida_Franja=salida_Franja.reset_index()
+#valor_x=list(salida_Franja.index)
+st.write(salida_Franja)
+st.write(salida_Franja.columns)
+
 select=st.sidebar.selectbox('Evolucion Franjas',['Prime','Off Prime PM','Prime Segunda Franja','Off Prime AM'],key='1')
 if st.sidebar.checkbox("Mostrar",True):
     
@@ -75,7 +83,9 @@ if st.sidebar.checkbox("Mostrar",True):
         fig=px.line(off2,x='Fecha',y=hogar_canales)
     
     st.plotly_chart(fig)
-
+    
+   # fig_bar=px.bar(salida_Franja,x='Franja',y=('SH_C13','mean'))
+   # st.plotly_chart(fig_bar)
 ##########################   FUNCIONES DE DISTRIBUCION   ######################################################################
 cdf_p=Cdf.from_seq(prime['SH_C13'])
 cdf_o=Cdf.from_seq(offprime['SH_C13'])
