@@ -22,7 +22,7 @@ from PIL import Image
 #@st.cache()
 def load_data():
     data=pd.read_csv('LQH_ST.csv')
-    data=data[data.Zona!='Otro']
+    #data=data[data.Zona!='Otro']
     return data
 lqh=load_data()
 
@@ -45,7 +45,7 @@ img=Image.open("lqh.png")
 
 st.title("Lugares que Hablan Análisis de Datos")
 st.image(img)
-st.markdown("Esta aplicación fue realizada por el equipo *BI-Comercial de Canal 13* como apoyo al área de programación, cualquier duda escribir al correo **<equipobi@13.cl>**")
+st.markdown("Esta aplicación fue realizada por el equipo *BI-Comercial de Canal 13* tomando como fuente de datos la información proporcionada por el área de programación, cualquier duda escribir al correo **<equipobi@13.cl>**")
 
 
 st.markdown("Los datos contemplados van desde el **%s** al **%s** con un total de **%i** emisiones"%(fec_ini,fec_fin,len(lqh)))
@@ -71,7 +71,7 @@ st.write(salida_Franja)
 select=st.sidebar.selectbox('Evolucion Franjas',['Prime','Off Prime PM','Prime Segunda Franja','Off Prime AM'],key='1')
 if st.sidebar.checkbox("Mostrar",True):
     
-    st.markdown("## Rendimiento Share %s"%(select))
+    st.markdown("## Rendimiento Share Hogar %s"%(select))
                 
     if select=='Prime':
         fig=px.line(prime,x='Fecha',y=hogar_canales)
